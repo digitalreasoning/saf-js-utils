@@ -1,0 +1,134 @@
+.shell-loading {
+    @grey: #E8E8E8;
+    @white: #F9F9F9;
+    @black: #262C31;
+    @charcoal: #778899;
+    @default-whirlpool: @default-blue;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    filter:alpha(opacity=80);
+    -moz-opacity:0.8;
+    -khtml-opacity: 0.8;
+    opacity: 0.8;
+    z-index: 2000;
+
+    .rounded-corners (@radius: 5px) {
+        border-radius: @radius;
+        -webkit-border-radius: @radius;
+        -moz-border-radius: @radius;
+        -o-border-radius: @radius;
+    }
+
+    .circle-common (@maxRadius, @borderSize, @sizeScale: 1, @scale:-1) {
+        @currentRadius: @maxRadius * @sizeScale;
+        @currentBorder: (@borderSize * @sizeScale);
+
+        width:  @currentRadius;
+        height: @currentRadius;
+
+        border: @currentBorder solid @default-whirlpool;
+        border-right: 5px solid rgba(0,0,0,0);
+        border-left: 5px solid rgba(0,0,0,0);
+
+        background-color: rgba(0,0,0,0);
+        opacity:.9;
+        margin:0 auto;
+        .rounded-corners(@currentRadius / 2);
+        top: (@currentRadius + ((@maxRadius - @currentRadius) / 2)) * @scale;
+        
+    }
+
+    .whirlpool-style (@mainRadius, @fontSize, @borderSize) {
+        height:   @mainRadius;
+        width:    @mainRadius;
+        z-index:  20000;
+        position: absolute;
+        font-family: 'Lucida Grande', tahoma, Helvetica, sans-serif;
+        color: @charcoal;
+
+        .whirlpool-text {
+            font-size:  @fontSize;
+            position:   absolute;
+            text-align: center;
+            width:      @mainRadius;
+            top:        @mainRadius * 0.45;
+        }
+
+        .whirlpool-outer-circle {
+            
+            box-shadow:    0 0 40px @default-whirlpool;
+            .circle-common(@mainRadius, @borderSize);
+
+            -moz-animation:spinPulse 5s infinite ease-in-out;
+            -webkit-animation:spinPulse 5s infinite linear;
+        }
+
+        .whirlpool-inner-circle {
+            box-shadow:    0 0 15px @default-whirlpool;
+            .circle-common(@mainRadius, @borderSize, 0.8);
+            
+            position: relative;
+
+            -moz-animation:    spinoffPulse 10s infinite linear;
+            -webkit-animation: spinoffPulse 10s infinite linear;
+        }
+
+        .whirlpool-small-circle {
+            box-shadow:    0 0 6px @default-whirlpool;
+            .circle-common(@mainRadius, @borderSize, 0.6, -2);
+            
+            position: relative;
+            opacity:  0.5;
+
+            -moz-animation:    reverseSpinoffPulse 20s infinite linear;
+            -webkit-animation: reverseSpinoffPulse 20s infinite linear;
+        }
+    }
+
+    .large-whirlpool {
+        .whirlpool-style(300px, 1.75em, 10px);
+        position: relative;
+        top: 50%;
+        margin: auto;
+        margin-top: -150px;
+    }
+
+    .small-whirlpool {
+        .whirlpool-style(100px, 1.0em, 4px);
+    }
+
+    @-moz-keyframes spinPulse {
+        0% { -moz-transform:rotate(160deg); opacity:0; box-shadow:0 0 1px @default-whirlpool;}
+        50% { -moz-transform:rotate(145deg); opacity:1; }
+        100% { -moz-transform:rotate(-320deg); opacity:0; }    
+    }
+    @-moz-keyframes spinoffPulse {
+        0% { -moz-transform:rotate(0deg); }
+        100% { -moz-transform:rotate(360deg); }
+    }
+    @-moz-keyframes reverseSpinoffPulse {
+        0% { -moz-transform:rotate(360deg); }
+        100% { -moz-transform:rotate(0deg); }
+    }
+
+    @-webkit-keyframes spinPulse {
+        0% { -webkit-transform:rotate(160deg); opacity:0; box-shadow:0 0 1px @default-whirlpool; }
+        25% { -webkit-transform:rotate(145deg); opacity:1;}
+        100% { -webkit-transform:rotate(-320deg); opacity:0; }
+    }
+    @-webkit-keyframes spinoffPulse {
+        0% { -webkit-transform:rotate(0deg); }
+        100% { -webkit-transform:rotate(360deg); }
+    }
+    @-webkit-keyframes reverseSpinoffPulse {
+        0% { -webkit-transform:rotate(360deg); }
+        100% { -webkit-transform:rotate(0deg); }
+    }
+}

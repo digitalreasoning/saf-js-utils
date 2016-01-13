@@ -1,0 +1,135 @@
+@font-face {
+  font-family: 'Glyphicons Halflings';
+  src: ~"url('@{icon-font-path}@{icon-font-name}.eot')";
+  src: ~"url('@{icon-font-path}@{icon-font-name}.eot?#iefix') format('embedded-opentype')",
+       ~"url('@{icon-font-path}@{icon-font-name}.woff') format('woff')",
+       ~"url('@{icon-font-path}@{icon-font-name}.ttf') format('truetype')",
+       ~"url('@{icon-font-path}@{icon-font-name}.svg#glyphicons-halflingsregular') format('svg')";
+}
+
+/* OVERRIDE BOOTSTRAP LESS VARIABLES */
+@font-family-sans-serif: @default-font-family;
+@state-warning-text: #F6AF3B;
+
+/* Override BOOTSTRAP STYLES */
+.navbar-inverse {
+  background-color: @default-dark-grey;
+}
+
+.navbar-inverse .navbar-nav > .active > a,
+.navbar-inverse .navbar-nav > .active > a:hover,
+.navbar-inverse .navbar-nav > .active > a:focus {
+  color: white;
+  background-color:  @default-blue;
+}
+
+.navbar-inverse .navbar-brand {
+  color: #5E5E5E;
+  height: 50px;
+}
+
+.navbar-inverse .navbar-brand > .active > a,
+.navbar-inverse .navbar-brand > .active > a:hover,
+.navbar-inverse .navbar-brand > .active > a:focus {
+  background-color:  @default-blue;
+  font-weight: bold;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+  color: @default-light-grey;
+}
+
+.navbar-default {
+  background-color: @default-light-grey;
+  color: #000;
+}
+
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+  color: #000;
+  background-color:  @default-med-grey;
+  border-bottom: 4px solid  @default-green;
+  font-weight: bold;
+  border-radius: 0px;
+}
+
+.navbar-default .navbar-nav > .disabled > a,
+.navbar-default .navbar-nav > .disabled > a:hover,
+.navbar-default .navbar-nav > .disabled > a:focus {
+  color: #EEE;
+}
+
+.navbar-brand {
+  padding: 5px 15px 5px 15px;
+}
+
+.badge-success {
+  background-color: @default-green;
+}
+
+.badge {
+  border: 1px solid @default-light-grey;
+  background-color: @default-light-grey;
+  border-radius: 0;
+  color: @default-black;
+
+}
+
+.nav-tabs{
+  border-color: @default-tab-border;
+  margin-bottom: 10px;
+}
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+  border-color: @default-tab-border;
+  border-bottom-color: transparent;
+}
+
+.well {
+  border-radius: 0px !important;
+  padding: 12px;
+  border: 0;
+}
+
+
+.btn {
+  border-radius: 0px !important;
+}
+
+.btn-success {
+  background-color: @default-green;
+}
+
+.btn-primary {
+  background-color: @default-blue;
+}
+
+.btn-glance {
+  background-color: @default-blue;
+  color: white;
+  border: 1px solid @default-blue;
+
+  &:hover {
+    color: white;
+    background-color: @default-blue-hover;
+  }
+}
+
+.btn-default {
+  background-color: @default-lightest-grey;
+  color: @default-black;
+  border-color: transparent;
+}
+.btn-primary {
+  background-color: @default-blue;
+  color: #FFF;
+  border-color: @default-blue;
+}
+
+.badge {
+   border-radius: 0;
+}
+
+.tooltip {
+  position: fixed;
+}

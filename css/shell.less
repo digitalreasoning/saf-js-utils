@@ -1,0 +1,201 @@
+@import 'loading.less';
+
+/*
+ * App wide classes
+ */
+@font-face {
+  font-family: 'Open Sans';
+  src: url('@{font-path}/OpenSans-Regular.ttf');
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url('@{font-path}/OpenSans-Bold.ttf');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Dosis';
+  src: url('@{font-path}/Dosis-Regular.ttf');
+  font-weight: normal
+}
+
+@font-face {
+  font-family: 'Dosis';
+  src: url('@{font-path}/Dosis-Bold.ttf');
+  font-weight: bold;
+}
+
+html, body {
+    background-color: @body-background-color;
+}
+
+body {
+    font-size: 1.3em !important;
+
+    .app-wrapper {
+        background-color: #FFF;
+        overflow: hidden;
+        min-height: 500px;
+    }
+}
+
+.shell-navbar {
+    border-radius: 0;
+    border: none;
+    margin: 0;
+    z-index: 50;
+    font-family: 'Dosis', sans-serif;
+    font-size: 115%;
+
+    #drsi-nav-collapse {
+        background-color: #666666;
+    }
+
+    .navbar-image-wrapper {
+        padding: 7px;
+        height: 100%;
+
+        img {
+            height: 100%;
+        }
+    }
+}
+
+.shell-loader {
+    width: 400px;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 300px;
+    text-align: center;
+
+    i.fa {
+        font-size: 50px;
+        color: darken(#D1D3D9, 10%);
+        text-shadow: 1px 1px 0px lighten(#D1D3D9, 5%);
+    }
+}
+
+.shell-footer {
+    border-radius: 0;
+    border: none;
+    margin-bottom: 0;
+    border-top: 1px solid darken(@body-background-color, 10%);
+
+    .navbar-nav {
+        padding-left: 5px;
+    }
+}
+
+.brand-link {
+    padding: 7px;
+    padding-left: 10px;
+
+    img {
+        height: 35px;
+    }
+}
+
+.tile {
+    padding: 10px;
+    background-color: #FFF;
+    box-shadow: 2px 2px 5px #999;
+    display: block;
+}
+
+.page-header {
+    margin: 0;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #EEE;
+    padding-bottom: 9px;
+
+    h1 {
+        font-size: 25px;
+        margin: 0;
+    }
+    &.minimal {
+        margin-bottom: 0;
+    }
+}
+
+.shell-view-container {
+    &.navBarShown {
+        padding-top: 50px;
+    }
+}
+
+.view-container {
+    padding: @grid-gutter-width @grid-gutter-width * 2.5;
+    background-color: #FFF;
+    position: relative;
+
+    @media (max-width: 600px) { padding: @grid-gutter-width; }
+}
+
+.loading {
+    text-align: center; 
+    margin-left: auto; 
+    margin-right: auto; 
+    color: @default-blue;
+    margin-bottom: 0;
+    padding-top: 130px;
+    background-color: rgba(255, 255, 255, 0.75);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    width: 100%;
+
+    > i {
+        font-size: 70px;
+        display: block;
+        margin: auto;
+        width: 70px;
+    }
+}
+
+/* Fix issues with the bootstrap-select styling */
+.shell-view-container .label.bootstrap-select-label .bootstrap-select-close {
+    top: 0px;
+}
+
+/* Isoptope animation classes */
+.isotope,
+.isotope .isotope-item {
+  /* change duration value to whatever you like */
+  -webkit-transition-duration: 0.8s;
+     -moz-transition-duration: 0.8s;
+      -ms-transition-duration: 0.8s;
+       -o-transition-duration: 0.8s;
+          transition-duration: 0.8s;
+}
+
+.isotope {
+  -webkit-transition-property: height, width;
+     -moz-transition-property: height, width;
+      -ms-transition-property: height, width;
+       -o-transition-property: height, width;
+          transition-property: height, width;
+}
+
+.isotope .isotope-item {
+  -webkit-transition-property: -webkit-transform, opacity;
+     -moz-transition-property:    -moz-transform, opacity;
+      -ms-transition-property:     -ms-transform, opacity;
+       -o-transition-property:      -o-transform, opacity;
+          transition-property:         transform, opacity;
+}
+
+.isotope.no-transition,
+.isotope.no-transition .isotope-item,
+.isotope .isotope-item.no-transition {
+  -webkit-transition-duration: 0s;
+     -moz-transition-duration: 0s;
+      -ms-transition-duration: 0s;
+       -o-transition-duration: 0s;
+          transition-duration: 0s;
+}

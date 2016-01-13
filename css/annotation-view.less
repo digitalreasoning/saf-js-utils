@@ -1,0 +1,35 @@
+.annotation-viewer {
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    @gutter-width: 16px;
+
+    .CodeMirror {
+        height: 100%;
+    }
+    .content-viewer {
+        padding-right: @gutter-width;
+        height: 100%;
+    }
+    .viewport-gutter {
+        width: @gutter-width;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+    }
+    .annotation-view-annotation {
+        cursor: default;
+    }
+    .gutter-canvas {
+        cursor: pointer;
+        border-left: 1px solid #d1d3d4;
+    }
+    .default-annotation {
+        background-color: darken(@default-yellow, -20%);
+
+        &:hover {
+            background-color: @default-yellow;
+        }
+    }
+}
