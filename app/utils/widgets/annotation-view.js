@@ -28,6 +28,17 @@ define([
         },
         // Public Functions
         // =======================================
+        batchAddAnnotations: function(arrayOfOptions) {
+            var self = this;
+            this.editor.operation(function() {
+                for (var i = 0; i < arrayOfOptions.length; i++) {
+                    // Ensure we don't refresh when batching
+                    arrayOfOptions[i].refresh = false;
+                    self.addAnnotation(arrayOfOptions[i]);
+                }
+            });
+            self.refresh();
+        },
         addAnnotation: function(options) {
             var settings = $.extend({
                 title: '',
@@ -52,7 +63,7 @@ define([
                 from: 0,
                 to: 0,
             }, options);
-            this.editor.markText({line:settings.from},{line:settings.to},{"collapsed": true, "inclusiveLeft": true, "inclusiveRight": true}) 
+            this.editor.markText({line:settings.from},{line:settings.to},{"collapsed": true, "inclusiveLeft": true, "inclusiveRight": true});
         },
         showAllLines: function() {
             var markArray = this.editor.getAllMarks();

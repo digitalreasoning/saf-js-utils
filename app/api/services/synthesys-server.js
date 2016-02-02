@@ -10,7 +10,7 @@ define([
     return {
         // Default settings for synthesys server requests
         defaults: {
-            url: "glance/query",
+            url: "",
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json"
