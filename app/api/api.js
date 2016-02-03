@@ -32,7 +32,6 @@ define([
             });
         },
         userHasPerms: function(options) {
-            var $deferred = $.Deferred();
             var settings = $.extend({
                 permission: null
                 // TODO: We could do this in the future if we want multiple permissions
@@ -41,12 +40,9 @@ define([
             return self.ajax({
                 url: 'users/permissions/' + encodeURIComponent(settings.permission)
             }).then(function(data, status, xhr) {
-                if (data.success && data.payload.permitted)
-                    $deferred.resolve(true);
-                else
-                    $deferred.resolve(false);
+                return data.success && data.payload.permitted ? true : false;
             }).fail(function() {
-                $deferred.resolve(false);
+                return false;
             });
         },
         findUserByUsername: function(username) {
