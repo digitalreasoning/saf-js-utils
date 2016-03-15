@@ -8,21 +8,21 @@ define([
         init: function() {
             this._active = false;
             this.$view = null;
-            // When binding events bind them to the object below. 
+            // When binding events bind them to the object below.
             // The events will automatically be unbound when
             // the viewmodel is deactivated.
             this.subscriptions = { };
 
             // Trigger events when a module is activated and finished rendering.
-            // This will mainly be used for testing. 
+            // This will mainly be used for testing.
             // This side-steps the inheritance model to ensure the methods are ran.
-            // In the event someone forgets to use this._super these functions will still be called. 
+            // In the event someone forgets to use this._super these functions will still be called.
             // Also these events need to trigger once the functions are complete vs. when they start.
             var wrapLifecycleCallback = function(methodName) {
                 this['_' + methodName] = this[methodName] || function() { return true; };
                 this[methodName] = function() {
                     var retVal = this['_' + methodName].apply(this, arguments);
-                    if (typeof window.dispatchEvent === 'function' && CustomEvent) {
+                    if (typeof window.dispatchEvent === 'function' && typeof window.CustomEvent === 'function') {
                         window.dispatchEvent(new CustomEvent('vm.' + methodName, { detail: this.__moduleId__ }));
                     }
                     return retVal;

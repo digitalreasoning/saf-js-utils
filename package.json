@@ -1,0 +1,19 @@
+{
+  "name": "saf-js-utils",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/digitalreasoning/saf-js-utils.git"
+  },
+  "author": "Chason <chason@chason-dev.digitalreasoning.com> (http://blog.example.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/digitalreasoning/saf-js-utils/issues"
+  },
+  "homepage": "https://github.com/digitalreasoning/saf-js-utils#readme"
+}
