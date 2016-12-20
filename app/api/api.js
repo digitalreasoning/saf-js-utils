@@ -13,7 +13,7 @@ define([
             }, options);
             settings.url = SAF.paths.root + '/' + settings.url;
             return GenericService.ajax(settings).then(function(data) {
-                if (!data || !data.success) return $.Deferred().reject(data).promise();  
+                if (!data || !data.success) return $.Deferred().reject(data).promise();
                 return data;
             });
         },
@@ -28,7 +28,7 @@ define([
             return self.ajax({
                 url: 'users/self'
             }).then(function(data) {
-                return data.payload.user;  
+                return data.payload.user;
             });
         },
         userHasPerms: function(options) {
@@ -49,7 +49,7 @@ define([
             return self.ajax({
                 url: 'users/search/username/' + encodeURIComponent(username)
             }).then(function(data) {
-                return data.payload.user;   
+                return data.payload.user;
             });
         },
         findUserById: function(id) {
@@ -63,14 +63,43 @@ define([
             var settings = $.extend({
                 limit: 20
             }, options);
-            return self.ajax({
+            var deferred = $.Deferred()
+            self.ajax({
                 url: 'users/search/term/' + encodeURIComponent(term),
                 data: {
                     limit: settings.limit
                 }
-            }).then(function(data) {
-                return data.payload.users;   
+            }).done(function(data) {
+              deferred.resolve(data.payload.users);
+            }).fail(function(data) {
+              if (data.tech_msg.indexOf('found matching search term') >= 0) {
+                deferred.resolve([]);
+              } else {
+                deferred.reject(data)
+              }
             });
+            return deferred.promise();
+        },
+        findGroupsByTerm: function(term, options) {
+            var settings = $.extend({
+                limit: 20
+            }, options);
+            var deferred = $.Deferred()
+            self.ajax({
+                url: 'groups/search/term/' + encodeURIComponent(term),
+                data: {
+                    limit: settings.limit
+                }
+            }).done(function(data) {
+              deferred.resolve(data.payload.groups);
+            }).fail(function(data) {
+              if (data.tech_msg.indexOf('found matching search term') >= 0) {
+                deferred.resolve([]);
+              } else {
+                deferred.reject(data)
+              }
+            });
+            return deferred.promise();
         },
         timeFormat: 'YYYY-MM-DD hh:mm:ss',
         parseTime: function(obj) {
