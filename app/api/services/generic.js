@@ -17,9 +17,14 @@ define([
                     this.afterUnauthenticatedAction();
                 }
             },
+            error: function(http, state, msg) {
+              if ([401, 403].indexOf(http.status) !== -1) {
+                this.afterUnauthenticatedAction();
+              }
+            },
             // Default response to an unauthenticated json request. Simple redirect to /apps/login
             afterUnauthenticatedAction: function() {
-                window.location = SAF.paths.root + '/login' + window.location.hash;
+                window.location.reload();
             }
         },
         // Call this function with standard $.ajax options object
