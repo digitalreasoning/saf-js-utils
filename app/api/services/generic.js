@@ -18,7 +18,7 @@ define([
                 }
             },
             error: function(http, state, msg) {
-              if ([401, 403].indexOf(http.status) !== -1) {
+              if ([401].indexOf(http.status) !== -1) {
                 this.afterUnauthenticatedAction();
               }
             },
